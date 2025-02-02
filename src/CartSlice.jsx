@@ -29,7 +29,9 @@ export const CartSlice = createSlice({
         const existingItem = state.items.find(item => item.name === name);
 
         if (existingItem){
-            existingItem.quantity = existingItem.quantity + quantity;
+            const difference = quantity - existingItem.quantity;
+            state.numItems += difference;
+            existingItem.quantity = quantity;
         }
     
     },
